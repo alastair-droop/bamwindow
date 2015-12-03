@@ -28,9 +28,9 @@
 char print_empty = 0;
 char match_mode = 0;
 char *target_name = "";
-uint32_t window_start = 0;
-uint32_t window_end = 0;
-uint32_t window_count = 0;
+unsigned long window_start = 0;
+unsigned long window_end = 0;
+unsigned long window_count = 0;
 
 // -m0, also the default:
 static int pileup_overlap(const bam1_t *b, void *data){
@@ -104,7 +104,7 @@ void process_region(samFile *in, bam1_t *b, hts_idx_t *index, bam_hdr_t *header,
     range_iter = sam_itr_querys(index, header, range);
     while ((result = sam_itr_next(in, range_iter, b)) >= 0) callback(b, NULL);
     if (window_count == 0 && print_empty == 0) return;
-    fprintf(stdout, "%s\t%zd\t%zd\t%zd\n", target_name, window_start + 1, window_end, window_count);
+    fprintf(stdout, "%s\t%lu\t%lu\t%lu\n", target_name, window_start + 1, window_end, window_count);
 }
 
 int main(int argc, char *argv[]){
@@ -216,7 +216,7 @@ int main(int argc, char *argv[]){
             window_end = window_start + window_size;
             if (window_end > target_end) window_end = target_end;
             window_length = window_end - window_start;
-            sprintf(range_string, "%s:%zd-%zd", target_name, window_start, window_end);
+            sprintf(range_string, "%s:%lu-%lu", target_name, window_start, window_end);
             process_region(input_file, bam_data, input_index, input_header, range_string);
             if (window_length < window_size) break;
             window_start = window_end;
@@ -241,7 +241,7 @@ int main(int argc, char *argv[]){
                 window_end = window_start + window_size;
                 if (window_end > target_end) window_end = target_end;
                 window_length = window_end - window_start;
-                sprintf(range_string, "%s:%zd-%zd", target_name, window_start, window_end);
+                sprintf(range_string, "%s:%lu-%lu", target_name, window_start, window_end);
                 process_region(input_file, bam_data, input_index, input_header, range_string);
                 if (window_length < window_size) break;
                 window_start = window_end;
