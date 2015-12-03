@@ -64,7 +64,7 @@ void print_usage(){
 }
 
 void print_version(){
-    fprintf(stdout, "%s %s\n", PROG_NAME, PROG_VERSION);
+    fprintf(stdout, "%s %s (HTSlib version %s)\n", PROG_NAME, PROG_VERSION, hts_version());
 }
 
 void print_help(){
