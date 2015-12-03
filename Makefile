@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall
-HTSDIR=./htslib # Change this to point at your htslib source directory.
+HTSDIR=./htslib
 
 bamwindow: htslib
 	$(CC) $(CFLAGS) -I$(HTSDIR) -L$(HTSDIR) -o bamwindow bamwindow.c -lhts
