@@ -12,13 +12,10 @@ There are three possible modes for matching a read to a window, overlap, midpoin
 
 In start and midpoint modes, a read is guaranteed to be counted at most once. Read clipped regions are discarded before window assignment.
 
-<<<<<<< HEAD
 ##Licence
 
 bamwindow is released under the [GNU General Public License version 3](http://www.gnu.org/licenses/gpl.html).
 
-=======
->>>>>>> origin/master
 ##Options & Arguments
 
 bamwindow is called as:
