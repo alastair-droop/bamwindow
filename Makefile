@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-Wall
-HTSDIR=./htslib
+HTSDIR=/usr/local/lib/
 
 all:
-	$(CC) $(CFLAGS) -I$(HTSDIR) -L$(HTSDIR) -o bamwindow bamwindow.c -lhts
+	$(CC) $(CFLAGS) -I$(HTSDIR) -L$(HTSDIR) -o bamwindow bamwindow.c -lm -lhts
 	
 clean:
 	-rm bamwindow
