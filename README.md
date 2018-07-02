@@ -1,8 +1,8 @@
-#bamwindow
+# bamwindow
 
-bamwindow segments aligned `BAM` files for downstream copy number analysis. Rather than using adaptive binning, `bamwindow` splits the genome into bins of fixed size, thus allowing multiple samples to be directly compared. Windows are generated using 1-based coordinated. Both the start and end nucleotide of a region are included. If a region is supplied, binning is only performed on that specified region; otherwise all chromosomes in the BAM file are processed. Unless the window size is an exact fraction of the sequence (or region) length,. the final window will be shorted than the specified width.
+`bamwindow` segments aligned `BAM` files for downstream copy number analysis. Rather than using adaptive binning, `bamwindow` splits the genome into bins of fixed size, thus allowing multiple samples to be directly compared. Windows are generated using 1-based coordinated. Both the start and end nucleotide of a region are included. If a region is supplied, binning is only performed on that specified region; otherwise all chromosomes in the BAM file are processed. Unless the window size is an exact fraction of the sequence (or region) length, the final window will be shorted than the specified width.
 
-##Window Matching
+## Window Matching
 
 There are three possible modes for matching a read to a window, overlap, midpoint and start:
 
@@ -12,11 +12,11 @@ There are three possible modes for matching a read to a window, overlap, midpoin
 
 In start and midpoint modes, a read is guaranteed to be counted at most once. Read clipped regions are discarded before window assignment.
 
-##Licence
+## Licence
 
 bamwindow is released under the [GNU General Public License version 3](http://www.gnu.org/licenses/gpl.html).
 
-##Options & Arguments
+## Options & Arguments
 
 bamwindow is called as:
 
@@ -30,7 +30,7 @@ bamwindow is called as:
 * `file`: the input BAM file to process
 * `region`: optionally, a chromosome region to process
 
-##Output Format
+## Output Format
 
 Output is returned in a tab-delimited format, containing the following columns:
 
@@ -41,13 +41,15 @@ Output is returned in a tab-delimited format, containing the following columns:
 
 If the `-e` argument was supplied, all processed windows will be returned in order, allowing for direct comparison with other samples. Otherwise, empty windows are not returned.
 
-##Building & Installation
+## Building & Installation
 
-bamwindow requires the [htslib](https://github.com/samtools/htslib) library. By default, bamwindow expects the htslib library to be present in the `htslib` folder. If it is installed elsewhere, you will need to alter the `HTSDIR` variable in the bamwindow Makefile.
+bamwindow requires the [htslib](https://github.com/samtools/htslib) library. By default, bamwindow expects the htslib files to be present in the `/usr/local/lib` folder. If it is installed elsewhere, you will need to alter the `HTSDIR` variable in the bamwindow Makefile.
 
 Once the HTSLib library is built, bamwindow can be built with:
 
-    cd bamwindow
-    ./make
+~~~bash
+cd bamwindow
+./make
+~~~
 
 This should build against HTSlib and generate the bamwindow executable.
