@@ -16,6 +16,8 @@ In start and midpoint modes, a read is guaranteed to be counted at most once. Re
 
 bamwindow is released under the [GNU General Public License version 3](http://www.gnu.org/licenses/gpl.html).
 
+The code in the `cmake` directory for finding HTSlib is taken from bamdb by Aaron Dornbrand-Lo. (see https://github.com/D-Lo/bamdb). These files are released under the BSD 2-Clause "Simplified" License.
+
 ## Options & Arguments
 
 bamwindow is called as:
@@ -43,13 +45,20 @@ If the `-e` argument was supplied, all processed windows will be returned in ord
 
 ## Building & Installation
 
-bamwindow requires the [htslib](https://github.com/samtools/htslib) library. By default, bamwindow expects the htslib files to be present in the `/usr/local/lib` folder. If it is installed elsewhere, you will need to alter the `HTSDIR` variable in the bamwindow Makefile.
+* bamwindow requires the [htslib](https://github.com/samtools/htslib) library. This should be present before you attempt to build bamwindow.
+* bamwindow uses [cmake](https://cmake.org) to simplify the make process. This must be installed for installation.
 
-Once the HTSLib library is built, bamwindow can be built with:
+The bamwindow code can be built from the main folder with:
 
 ~~~bash
-cd bamwindow
-./make
+mkdir build
+cd build
+cmake ../
+make
 ~~~
 
-This should build against HTSlib and generate the bamwindow executable.
+You can subsequently install bamwindow with:
+
+~~~bash
+sudo make install
+~~~

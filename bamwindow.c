@@ -19,10 +19,10 @@
 #include <getopt.h>
 #include <string.h>
 #include <math.h>
-#include <htslib/sam.h>
+#include "sam.h"
 
 #define PROG_NAME "bamwindow"
-#define PROG_VERSION "2.0a (2015-12-03)"
+#define PROG_VERSION "2.1a (2019-02-22)"
 
 // Global variables:
 char print_empty = 0;
